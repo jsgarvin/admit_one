@@ -1,4 +1,4 @@
-require "admit_one/version"
+require File.expand_path('../lib/admit_one/version',  __FILE__)
 
 Gem::Specification.new do |s|
   s.name        = "admit_one"
