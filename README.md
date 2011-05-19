@@ -39,7 +39,7 @@ purpose of a lock file.
 Usually this is caused by one line of code that checks to see if the lock file
 already exists, and if not, a second that creates it. This means two processes
 could each, theoretically, check for the file at the same time, both not find
-one and think it's save for each of them to create one, and then both do so,
+one and think it's safe for each of them to create one, and then both do so,
 blissfully ignorant of each other.
 
 Admittedly, this scenario seems highly unlikely, but in some applications
