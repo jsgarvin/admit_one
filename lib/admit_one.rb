@@ -1,0 +1,1 @@
+require File.expand_path('../admit_one/lock_file',  __FILE__)
