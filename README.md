@@ -6,26 +6,26 @@ A Ruby lock file manager that is immune to race conditions.
 Usage
 -----
 
-  AdmitOne::LockFile.new(:lock_name) do
-    begin
-      # code that needs to run with confidence
-      # that the same code isn't also running
-      # at the same time in another process
-    rescue AdmitOne::LockFileAlreadyExists
-      # gracefully recover if the lock could not
-      # be established
+    AdmitOne::LockFile.new(:lock_name) do
+      begin
+        # code that needs to run with confidence
+        # that the same code isn't also running
+        # at the same time in another process
+      rescue AdmitOne::LockFileAlreadyExists
+        # gracefully recover if the lock could not
+        # be established
+      end
     end
-  end
 
 Installation
 ------------
 
-  gem install admit_one
+    gem install admit_one
 
 Testing
 -------
 
-  rake
+    rake
   
 Race Conditions
 ---------------
@@ -33,7 +33,7 @@ Race Conditions
 All other Ruby lock file libraries I've examined (I'm sure I've missed some,
 but hey) are susceptible to race conditions, meaning that there's a tiny
 window of opportunity for two separate processes that want the same lock file
-to both /think/ that they successfully got the lock, defeating the entire
+to both *think* that they successfully got the lock, defeating the entire
 purpose of a lock file.
 
 Usually this is caused by one line of code that checks to see if the lock file
