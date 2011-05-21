@@ -10,8 +10,6 @@ Gem::Specification.new do |s|
   s.summary     = %q{Race resistant lock file manager.}
   s.description = %q{Ruby lock file manager that is highly resistant, if not outright immune, to race conditions.}
 
-  s.rubyforge_project = "admit_one"
-
   s.files         = `git ls-files`.split("\n")
   s.test_files    = `git ls-files -- test/*`.split("\n")
   s.require_paths = ["lib"]
