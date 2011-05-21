@@ -8,7 +8,7 @@ Gem::Specification.new do |s|
   s.email       = ["jon@5valleys.com"]
   s.homepage    = "https://github.com/jsgarvin/admit_one"
   s.summary     = %q{Race resistant lock file manager.}
-  s.description = %q{Ruby lock file manager that is highly resistant, if not outright, immune to race conditions.}
+  s.description = %q{Ruby lock file manager that is highly resistant, if not outright immune, to race conditions.}
 
   s.rubyforge_project = "admit_one"
 
