@@ -11,7 +11,7 @@ Usage
         # code that needs to run with confidence
         # that the same code isn't also running
         # at the same time in another process
-      rescue AdmitOne::LockFileAlreadyExists
+      rescue AdmitOne::LockFailure
         # gracefully recover if the lock could not
         # be established
       end
@@ -55,19 +55,18 @@ append mode. If the file doesn't already exist, it creates it and then opens
 it. Otherwise it just opens it. Then, any writes to the file are appended
 to the end. Two processes can open and write to the file at the same time.
 
-AdmitOne writes the process id to the file, closes the file and then reopens
-it, this time in read mode, to compare it's process id with the one on the
-first line in the file. In the event of a race condition, two process ids
-will be written to the file (remember, append mode), but *only one* can
-possibly be on the first line.
+AdmitOne appends the process id to the end of file, then reads the first
+line in file to compare it's process id with the one on the first line.
+In the event of a race condition, two process ids will be written to the
+file (remember, append mode), but *only one* can possibly be on the first
+line.
 
-The first process will reopen the lock file in read mode, compare it's process
-id with the one on the first line, see that they match, and only then
-execute your block of code that needed a lock. The second process also opens
-the file, but it will see that the process id on the first line does *not*
-match it's own, and instead of executing the code block, will raise an
-exception for your application to catch and handle gracefully according to
-your preferences (such as trying again later, or triggering a missile launch).   
+The first process will confirm that it's process id is on the first line,
+and only then execute your block of code that needed a lock. The second
+process will see that the process id on the first line does *not* match
+it's own, and instead of executing the code block, will raise an exception
+for your application to catch and handle gracefully according to your
+preferences (such as trying again later, or triggering a missile launch).
 
 Contributions
 -------------
