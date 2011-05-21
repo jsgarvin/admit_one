@@ -1,7 +1,7 @@
 AdmitOne
 ========
 
-A Ruby lock file manager that is immune to race conditions.
+A Ruby lock file manager that is highly resistant, if not outright immune, to race conditions.
 
 Usage
 -----
