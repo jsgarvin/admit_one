@@ -6,15 +6,15 @@ A Ruby lock file manager that is highly resistant, if not outright immune, to ra
 Usage
 -----
 
-    AdmitOne::LockFile.new(:lock_name) do
-      begin
+    begin
+      AdmitOne::LockFile.new(:lock_name) do
         # code that needs to run with confidence
         # that the same code isn't also running
         # at the same time in another process
-      rescue AdmitOne::LockFailure
-        # gracefully recover if the lock could not
-        # be established
       end
+    rescue AdmitOne::LockFailure
+      # gracefully recover if the lock could not
+      # be established
     end
 
 Installation
